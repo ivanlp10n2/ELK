@@ -1,10 +1,10 @@
-package com.empanada.elk.demoone;
+package com.empanada.elk.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoOneApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {

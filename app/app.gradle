@@ -36,7 +36,7 @@ test {
 }
 
 springBoot {
-  mainClassName = 'com.empanada.elk.demoone.DemoOneApplication'
+  mainClassName = 'com.empanada.elk.app.Application'
 }
 
 

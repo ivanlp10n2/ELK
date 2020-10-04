@@ -1,12 +1,12 @@
-package com.empanada.elk.demoone;
+package com.empanada.elk.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoOneApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoOneApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }

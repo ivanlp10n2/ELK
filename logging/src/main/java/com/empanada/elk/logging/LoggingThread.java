@@ -19,7 +19,7 @@ public class LoggingThread extends Thread{
   public void run() {
     while (!done) {
       try {
-          doWork();
+          logMessage();
           Thread.sleep(milliseconds);
       } catch (InterruptedException ex) {
           Thread.currentThread().interrupt();
@@ -36,7 +36,7 @@ public class LoggingThread extends Thread{
     this.done = true;
   }
 
-  private void doWork() {
+  private void logMessage() {
     LOG.info(message);
   }
 }

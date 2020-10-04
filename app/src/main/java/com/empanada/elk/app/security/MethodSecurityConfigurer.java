@@ -1,4 +1,4 @@
-package com.empanada.elk.demoone.security;
+package com.empanada.elk.app.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

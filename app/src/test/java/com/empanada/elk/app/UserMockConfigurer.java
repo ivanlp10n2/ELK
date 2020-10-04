@@ -1,4 +1,4 @@
-package com.empanada.elk.demoone;
+package com.empanada.elk.app;
 
 public class UserMockConfigurer {
 }

@@ -10,8 +10,8 @@ public class TimerDTO {
     this.message = message;
   }
 
-  public static TimerDTO of(Long seconds, String message){
-    return new TimerDTO(seconds, message);
+  public static TimerDTO of(Long milliseconds, String message){
+    return new TimerDTO(milliseconds, message);
   }
 
   public Long getMilliseconds() {
