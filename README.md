@@ -18,3 +18,7 @@ It starts the logging service with the message "test" each two seconds.
 
 ###### POST /engine/stop
 It stops the logging service (stops all the threads started with logging service)
+
+
+###### POST /actuator/shutdown
+Shutdown procedure built-in with actuators
