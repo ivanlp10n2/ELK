@@ -4,12 +4,23 @@ plugins {
 	id 'java'
 }
 
+jar {
+  enabled = true
+}
+
+bootJar {
+  enabled = false
+}
+
 group = 'com.empanada.elk'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+repositories {
+	mavenCentral()
+}
+
 dependencies {
-	implementation project(':logging')
 	implementation ('org.springframework.boot:spring-boot-starter-web') {
        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
@@ -18,25 +29,12 @@ dependencies {
 	implementation ('org.springframework.boot:spring-boot-starter-actuator'){
        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
     }
-	implementation ('org.springframework.boot:spring-boot-starter-security'){
-       exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-    }
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 }
 
-repositories {
-    jcenter()
-}
-
 test {
 	useJUnitPlatform()
 }
-
-springBoot {
-  mainClassName = 'com.empanada.elk.demoone.DemoOneApplication'
-}
-
-

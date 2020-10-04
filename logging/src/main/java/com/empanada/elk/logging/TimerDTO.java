@@ -1,4 +1,4 @@
-package com.empanada.elk.demoone.logging;
+package com.empanada.elk.logging;
 
 public class TimerDTO {
 

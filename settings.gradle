@@ -8,4 +8,8 @@
  */
 
 rootProject.name = 'ELK'
-include'demo-one'
+include (
+  'demo-one',
+  'logging'
+
+)

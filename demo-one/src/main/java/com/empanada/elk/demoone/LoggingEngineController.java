@@ -1,7 +1,7 @@
-package com.empanada.elk.demoone.controllers;
+package com.empanada.elk.demoone;
 
-import com.empanada.elk.demoone.logging.LoggingEngine;
-import com.empanada.elk.demoone.logging.TimerDTO;
+import com.empanada.elk.logging.LoggingEngine;
+import com.empanada.elk.logging.TimerDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
