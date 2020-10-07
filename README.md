@@ -11,8 +11,14 @@ from root project: ./gradle bootRun
 
 ## REST endpoints
 
-###### GET /engine/start
+###### POST /engine/start
+###### Payload : { "seconds": int, "message" : string }  
+
 It starts the logging service with the message "test" each two seconds.
 
-###### GET /engine/stop
+###### POST /engine/stop
 It stops the logging service (stops all the threads started with logging service)
+
+
+###### POST /actuator/shutdown
+Shutdown procedure built-in with actuators
