@@ -39,4 +39,8 @@ springBoot {
   mainClassName = 'com.empanada.elk.app.Application'
 }
 
+bootRun {
+  systemProperties = System.properties
+}
+
 

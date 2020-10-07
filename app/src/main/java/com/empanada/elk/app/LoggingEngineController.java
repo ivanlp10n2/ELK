@@ -2,9 +2,8 @@ package com.empanada.elk.app;
 
 import com.empanada.elk.logging.LoggingEngine;
 import com.empanada.elk.logging.TimerDTO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,11 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoggingEngineController {
 
-  private static final Logger LOG = LoggerFactory.getLogger(LoggingEngineController.class);
-
   private final long MILLISECOND = 1000l;
 
   private LoggingEngine engine;
+
+  @Value("${spring.application.name}")
+  private String APP_NAME;
 
   @Autowired
   LoggingEngineController (LoggingEngine engine){
@@ -34,7 +34,7 @@ public class LoggingEngineController {
     TimerDTO timer = TimerDTO.of( milliseconds, message.getMessage());
 
     engine.startNewTimer(timer);
-    return new ResponseEntity("Starting new thread logging", HttpStatus.OK);
+    return new ResponseEntity("Starting new thread logging in APP: " + APP_NAME, HttpStatus.OK);
   }
 
   @PostMapping("/stop")

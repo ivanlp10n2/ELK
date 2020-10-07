@@ -1,5 +1,6 @@
 package com.empanada.elk.app.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,9 +10,14 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 @Configuration
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
+  @Value("${mock.username}")
+  private String username;
+  @Value("${mock.password}")
+  private String password;
+
   @Override
   protected void configure(AuthenticationManagerBuilder builder) throws Exception{
-    builder.userDetailsService(new DefaultUserDetailsService());
+    builder.userDetailsService(new DefaultUserDetailsService(username, password));
   }
 
   @Override
@@ -24,6 +30,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
             .and()
             .httpBasic()
             .and()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
   }
 }

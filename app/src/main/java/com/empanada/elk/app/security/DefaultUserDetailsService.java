@@ -13,8 +13,9 @@ public class DefaultUserDetailsService implements UserDetailsService {
   List<UserDTO> users = new ArrayList<>();
   final String ENCODER_PREFIX = "{noop}";
 
-  DefaultUserDetailsService(){
-    users.add(new UserDTO("root", "root", "USER"));
+
+  DefaultUserDetailsService(String username, String password){
+    users.add(new UserDTO(username, password, "USER"));
   }
 
   @Override
