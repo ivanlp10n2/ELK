@@ -3,7 +3,6 @@ package com.empanada.elk.app;
 import com.empanada.elk.logging.LoggingEngine;
 import com.empanada.elk.logging.TimerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,9 +19,6 @@ public class LoggingEngineController {
 
   private LoggingEngine engine;
 
-  @Value("${spring.application.name}")
-  private String APP_NAME;
-
   @Autowired
   LoggingEngineController (LoggingEngine engine){
     this.engine = engine;
@@ -34,13 +30,13 @@ public class LoggingEngineController {
     TimerDTO timer = TimerDTO.of( milliseconds, message.getMessage());
 
     engine.startNewTimer(timer);
-    return new ResponseEntity("Starting new thread logging in APP: " + APP_NAME, HttpStatus.OK);
+    return new ResponseEntity("Starting new logging thread. ", HttpStatus.OK);
   }
 
   @PostMapping("/stop")
   public ResponseEntity stop(){
     engine.stopAllTimers();
-    return new ResponseEntity("Stopping all threads", HttpStatus.OK );
+    return new ResponseEntity("Stopping all threads.", HttpStatus.OK );
   }
 
 }
