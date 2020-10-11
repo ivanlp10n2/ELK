@@ -7,7 +7,7 @@ It will be built using two images of the same application -> demo-one
 
 
 ## Run
-from root project: ./gradle bootRun
+from root project: APP_NAME=nameForLogging ./gradlew bootRun
 
 ## REST endpoints
 
