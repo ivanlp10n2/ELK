@@ -35,18 +35,18 @@ All in one command:
 
 ## REST endpoints
 
-#####Starts the logging service with the message "test" each two seconds.
+##### Starts the logging service with the message "test" each two seconds.
 ```
 POST /engine/start
 Payload : { "seconds": int, "message" : string }  
 ```
 
-#####It stops the logging service (stops all the threads started with logging service)
+##### It stops the logging service (stops all the threads started with logging service)
 ```
 POST /engine/stop
 ```
 
-#####Shutdown procedure built-in with actuators
+##### Shutdown procedure built-in with actuators
 ```
 POST /actuator/shutdown
 ```
