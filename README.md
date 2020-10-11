@@ -16,13 +16,23 @@ This centralized logging will run in Docker containers with docker-compose
 ## Run
 from **app** project:
 - build application : ./gradlew build
-- build docker image: docker build -t logging-app .
-- build and run docker container. Expose port 8080 and use logging prefix: docker run --name -p 8080:8080 --env LOG_PREFIX=app logging-app 
+- build docker image: docker build -t logging-app:1.0 .
+- build and run docker container. Expose port 8080 and use logging prefix: docker run --name -p 8080:8080 --env LOG_PREFIX=app logging-app:1.0 
 
 ``` 
 All in one command: 
-./gradlew build && docker build -t logging-app . && docker run -p 8080:8080 --env LOG_PREFIX=app logging-app 
+./gradlew build && docker build -t logging-app . && docker run -p 8080:8080 --env LOG_PREFIX=app logging-app:1.0
 ```
+#### docker-compose
+from **root** project:
+- build application : ./app/gradlew build
+- build docker image: docker build -t logging-app:1.0 app/.
+- run docker-compose for binding two running instances on port 8080 and 8082: docker-compose up
+``` 
+All in one command: 
+./app/gradlew build && docker build -t logging-app:1.0 app/. && docker-compose up
+```
+
 ## REST endpoints
 
 #####Starts the logging service with the message "test" each two seconds.
