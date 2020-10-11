@@ -1,7 +1,7 @@
 package com.empanada.elk.logging;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
 
 @Service
 public class LoggingEngine {
-  private static final Logger LOG = LoggerFactory.getLogger(LoggingEngine.class);
+  private static final Logger LOG = LogManager.getLogger(LoggingEngine.class);
   Set<LoggingThread> timersInMemory = new HashSet<>();
 
   public void startNewTimer(TimerDTO timer) {

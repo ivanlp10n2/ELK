@@ -21,7 +21,7 @@ from **app** project:
 
 ``` 
 All in one command: 
-./gradlew build && docker build -t logging-app . && docker run -p 8080:8080 --env LOG_PREFIX=app logging-app:1.0
+./gradlew build && docker build -t logging-app:1.0 . && docker run -p 8080:8080 --env LOG_PREFIX=app logging-app:1.0
 ```
 #### docker-compose
 from **root** project:

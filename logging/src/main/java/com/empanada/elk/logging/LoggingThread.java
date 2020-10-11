@@ -1,11 +1,12 @@
 package com.empanada.elk.logging;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class LoggingThread extends Thread{
 
-  private static final Logger LOG = LoggerFactory.getLogger(LoggingThread.class);
+  private static final Logger LOG = LogManager.getLogger(LoggingThread.class);
   private boolean done = false;
   private Long milliseconds;
   private String message;
