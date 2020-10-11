@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RequestMapping("/engine")
+@RequestMapping("/logger")
 @RestController
 public class LoggingEngineController {
 
@@ -30,10 +30,10 @@ public class LoggingEngineController {
     TimerDTO timer = TimerDTO.of( milliseconds, message.getMessage());
 
     engine.startNewTimer(timer);
-    return new ResponseEntity("Starting new logging thread. ", HttpStatus.OK);
+    return new ResponseEntity("Starting new logger.", HttpStatus.OK);
   }
 
-  @PostMapping("/stop")
+  @PostMapping("/stopAll")
   public ResponseEntity stop(){
     engine.stopAllTimers();
     return new ResponseEntity("Stopping all threads.", HttpStatus.OK );

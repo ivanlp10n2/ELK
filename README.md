@@ -33,17 +33,26 @@ All in one command:
 ./app/gradlew build && docker build -t logging-app:1.0 app/. && docker-compose up
 ```
 
-## REST endpoints
+## API
+All the endpoints are HTTP secured with basic auth. Credentials are hardcoded (application.properties). It can be implemented with env variables if needed. 
+```
+username: root
+password: root 
+```
 
-##### Starts the logging service with the message "test" each two seconds.
+### Endpoints:
+##### Starts to log continuously the message provided every second defined
 ```
-POST /engine/start
-Payload : { "seconds": int, "message" : string }  
+POST /logger/start
+Payload : { 
+    "seconds": int, 
+    "message" : string 
+}  
 ```
 
-##### It stops the logging service (stops all the threads started with logging service)
+##### Stops all the loggers started in the application
 ```
-POST /engine/stop
+POST /logger/stopAll
 ```
 
 ##### Shutdown procedure built-in with actuators
