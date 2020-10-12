@@ -1,16 +1,15 @@
 ## ELK (in progress)
 
-PoC for **_centralized logging_** using Logstash + Elastic Search + Kibana 
-
-It will be built using two images of the same application -> demo-one
+PoC for **_centralized logging_** using Filebeat + Logstash + Elastic Search + Kibana 
 
 ## Building idea
 This centralized logging will run in Docker containers with docker-compose
 
 - app: logging api.
 - logging: customizations for logging.
-- logstash: engine for log consuming and storing in nosql database.
-- elastic-search: save files created by logstash and gathered by kibana.
+- filebeat: shipping logs from stdout to logstash
+- logstash: consuming logs, filter and save with indexes.
+- elasticsearch: store documents.
 - kibana: dashboard with filter options.
 
 ## Run
@@ -58,4 +57,17 @@ POST /logger/stopAll
 ##### Shutdown procedure built-in with actuators
 ```
 POST /actuator/shutdown
+```
+
+## Elastic stack configurations
+Credentials
+```
+username: elastic
+password: root
+```
+
+####Endpoints
+**Kibana**
+```
+http://localhost:5601
 ```
