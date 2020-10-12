@@ -1,15 +1,67 @@
 version: "3.6"
 services:
-  one:
-    image: logging-app:1.0
-    environment:
-      - LOG_PREFIX=app-one
-    ports:
-      - 8080:8080
+ app:
+   image: logging-app:1.0
+   environment:
+     - LOG_PREFIX=app-one
+   ports:
+     - 8080:8080
 
-  two:
-    image: logging-app:1.0
-    environment:
-      - LOG_PREFIX=app-two
-    ports:
-      - 8082:8080
+ elasticsearch:
+   build:
+     context: elasticsearch/
+   volumes:
+     - type: volume
+       source: elasticsearch
+       target: /usr/share/elasticsearch/data
+   ports:
+     - "9200:9200"
+     - "9300:9300"
+   environment:
+     ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+     ELASTIC_PASSWORD: root
+     discovery.type: single-node
+   networks:
+     - elk_stack
+ 
+ logstash:
+   build:
+     context: logstash/
+   ports:
+     - "5000:5000"
+     - "9600:9600"
+   environment:
+     LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+   networks:
+     - elk_stack
+   depends_on:
+     - elasticsearch
+ 
+ kibana:
+   build:
+     context: kibana/
+   ports:
+     - "5601:5601"
+   networks:
+     - elk_stack
+   depends_on:
+     - elasticsearch
+
+ filebeats:
+   build:
+     context: filebeat/
+   volumes:
+     - /var/run/docker.sock:/var/run/docker.sock:ro
+     - /var/lib/docker/containers:/var/lib/docker/containers:ro
+   networks:
+     - elk_stack
+   depends_on:
+     - logstash
+
+
+networks:
+ elk_stack:
+   driver: bridge
+ 
+volumes:
+ elasticsearch:
