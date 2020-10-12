@@ -2,7 +2,7 @@ filebeat.inputs:
 - type: container
   combine_partial: true 
   paths: 
-  - "/var/lib/docker/containers/bcf34c0d2ef12ff2355a9233aa698c598de0e6a8b83982528c1de641e3019905/*.log"
+  - "/var/lib/docker/containers/*/*.log"
   exclude_files: ['\.gz$']
   exclude_lines: ["^\\s+[\\-`('.|_]"]
   stream: "stdout" 
