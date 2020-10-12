@@ -3,7 +3,9 @@
 PoC for **_centralized logging_** using Filebeat + Logstash + Elastic Search + Kibana 
 
 ## Building idea
-This centralized logging will run in Docker containers with docker-compose
+This centralized logging will run in Docker containers with docker-compose. 
+<br>
+_Filebeat_ will consume stdout logs from docker (/var/lib/docker/containers/), ship to _logstash_, store in _elastic_ and visualize in _kibana_.
 
 - app: logging api.
 - logging: customizations for logging.
@@ -71,3 +73,6 @@ password: root
 ```
 http://localhost:5601
 ```
+
+You can filter in messages to see the logging applications
+![Image of kibana](https://i.imgur.com/3TRqMNy.png)
