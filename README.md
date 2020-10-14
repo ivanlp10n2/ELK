@@ -15,23 +15,13 @@ _Filebeat_ will consume stdout logs from docker (/var/lib/docker/containers/), s
 - kibana: dashboard with filter options.
 
 ## Run
-from **app** project:
+from **root** project
 - build application : ./gradlew build
-- build docker image: docker build -t logging-app:1.0 .
-- build and run docker container. Expose port 8080 and use logging prefix: docker run --name -p 8080:8080 --env LOG_PREFIX=app logging-app:1.0 
+- build images and run docker containers : docker-compose up
 
 ``` 
 All in one command: 
-./gradlew build && docker build -t logging-app:1.0 . && docker run -p 8080:8080 --env LOG_PREFIX=app logging-app:1.0
-```
-#### docker-compose
-from **root** project:
-- build application : ./app/gradlew build
-- build docker image: docker build -t logging-app:1.0 app/.
-- run docker-compose for binding two running instances on port 8080 and 8082: docker-compose up
-``` 
-All in one command: 
-./app/gradlew build && docker build -t logging-app:1.0 app/. && docker-compose up
+./gradlew build && docker-compose up
 ```
 
 ## API

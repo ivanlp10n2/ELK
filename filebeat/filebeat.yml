@@ -5,7 +5,7 @@ filebeat.inputs:
   - "/var/lib/docker/containers/*/*.log"
   exclude_files: ['\.gz$']
   exclude_lines: ["^\\s+[\\-`('.|_]"]
-  stream: "stdout" 
+    #stream: "stdout" 
   encoding: utf-8
   ignore_older: 10m
 
@@ -28,7 +28,7 @@ output.logstash:
   hosts: ["logstash:5044"]
 
 # Write Filebeat own logs only to file to avoid catching them with itself in docker log files
-logging.level: info
+logging.level: error
 logging.to_files: false
 logging.to_syslog: false
 loggins.metrice.enabled: false

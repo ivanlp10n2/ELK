@@ -1,7 +1,8 @@
 version: "3.6"
 services:
  app:
-   image: logging-app:1.0
+   build:
+     context: app/
    environment:
      - LOG_PREFIX=app-one
    ports:

@@ -6,13 +6,12 @@
  * Detailed information about configuring a multi-project build in Gradle can be found
  * in the user manual at https://docs.gradle.org/6.5/userguide/multi_project_builds.html
  */
+rootProject.name = 'ELK'
 
 include (
   'app',
   'logging'
 )
-
-rootProject.name = 'ELK'
 
 rootProject.children.each { project ->
   project.buildFileName =  project.name + '.gradle'
